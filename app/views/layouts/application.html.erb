@@ -9,7 +9,17 @@
 <body>
 
 <%= render "layouts/header" %>
-<%= yield %>
+<% flash.each do |type, message | %>
+    <div class="alert alert-warning alert-dismissible" role="alert">
+      <button type"button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong><%= message %></strong>
+    </div>
+    <% end %>
+
+  <div class="container">
+
+    <%= yield %>
+  <div>
 
 </body>
 </html>
