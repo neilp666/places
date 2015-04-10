@@ -1,43 +1,34 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @place.name %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @place.address %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @place.description %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @place.phone %>
-</p>
-
-<p>
-  <strong>Website:</strong>
-  <%= @place.website %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @place.user_id %>
-</p>
+<div class="row">
+<div class="col-md-3">
+  <h3><%= @place.name %></h3>
 
 
-<%= @place.latitude %>
-<%= @place.longitude %>
+    <p><strong>Address</strong>
+    <%= @place.address %></p>
+
+    <p><strong>Phone</strong>
+    <%= @place.phone %></p>
+
+    <p><strong>Website</strong>
+    <%= @place.website %></p>
+
+
+    <p><strong>Descritption</strong>
+    <%= @place.description %></p>
+
 
 <div id="map-canvas" style="width: 230px; height: 230px"></div>
 
-<%= link_to 'Edit', edit_place_path(@place) %> |
-<%= link_to 'Back', places_path %>
+</div>
+
+
+<div class="col-md-9">
+  <h3> Reviews by People </h3>
+</div>
+</div>
+
+
+
 
 
 <script type="text/javascript">
