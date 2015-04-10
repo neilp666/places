@@ -1,4 +1,5 @@
 class PlacesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update]
   before_action :set_place, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
@@ -21,7 +22,7 @@ class PlacesController < ApplicationController
   end
 
   def create
-    @place = Place.new(place_params)
+    @place = current_user.places.new(place_params)
     @place.save
     respond_with(@place)
   end
@@ -42,6 +43,6 @@ class PlacesController < ApplicationController
     end
 
     def place_params
-      params.require(:place).permit(:name, :address, :description, :phone, :website, :user_id)
+      params.require(:place).permit(:name, :address, :description, :phone, :website)
     end
 end
