@@ -10,7 +10,7 @@ class PlacesController < ApplicationController
   end
 
   def show
-    respond_with(@place)
+    @review = Review.new
   end
 
   def new

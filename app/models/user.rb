@@ -4,6 +4,14 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+
+  # validates the name 
   validates_presence_of :name
-  has_many :places
+
+  # A user has many places 
+  has_many :places, dependent: :destroy
+
+  # A user has many reviews
+   
+  has_many :reviews, dependent: :destroy
 end

@@ -24,6 +24,11 @@
 
 <div class="col-md-9">
   <h3> Reviews by People </h3>
+  <h5> New review </h5>
+
+<% if current_user %>
+  <%= render "reviews/form" %>
+<% end %>
 </div>
 </div>
 
