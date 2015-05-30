@@ -10,21 +10,27 @@ class ReviewsController < ApplicationController
   def create
     @review = current_user.reviews.new(review_params)
     
-    if @review.save
-      respond_with(place_path(@review.place))
-    else
-      respond_to place_path(@review.place)
+    respond_to do |format|
+      if @review.save
+          format.html { redirect_to place_path(@review.place), notice: 'Review was saved' }
+      else
+          format.html { redirect_to place_path(@review.place), notice: 'Something went wrong' }
+      end
     end
-
   end
 
   def update
-    if  @review.update(review_params)
-    respond_with(place_path(@review.place))
-    else 
-      respond_to place_path(@review.place)
+
+    respond_to do |format|
+      if @review.save
+          format.html { redirect_to place_path(@review.place), notice: 'Review was saved' }
+      else
+          format.html { redirect_to place_path(@review.place), notice: 'Something went wrong' }
+      end
     end
   end
+   
+   
     
   def destroy
     @review.destroy
@@ -46,7 +52,7 @@ class ReviewsController < ApplicationController
   # params - the actual attributes 
 
   def review_params
-    params.require(:review).permit(:content, :place_id)
+    params.require(:review).permit(:content, :place_id, :score)
   end
 
 

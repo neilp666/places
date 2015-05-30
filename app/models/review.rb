@@ -1,16 +1,16 @@
 class Review < ActiveRecord::Base
 
-
-  #review belongs to a user
-
   belongs_to :user
+  belongs_to :place
 
+  validates_presence_of :score
+  validates_presence_of :content
 
-  # Geocoded
+  after_save :calculate_average
 
-  geocoded_by :address
-  after_validation :geocoded
-
-  has_many :reviews, dependent: :destroy
+  def calculate_average
+    a = self.place.average_rating
+    self.place.update_attributes(total_average_rating: a)
+  end
 
 end
