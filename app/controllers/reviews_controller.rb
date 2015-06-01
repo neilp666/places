@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
 
   #edit reference to the set_review 
   def edit
+    @place = preview.place
   end
 
   def create
